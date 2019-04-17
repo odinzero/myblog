@@ -1,1 +1,1 @@
-web: vendor/bin/heroku-php-apache2 -C rewrite.conf /web
+web: vendor/bin/heroku-php-apache2 -C index.php /web
