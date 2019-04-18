@@ -1,14 +1,11 @@
-RewriteEngine On
 
-RewriteRule ^\.htaccess$ - [F]
+Options +FollowSymLinks -Indexes
+IndexIgnore */*
 
-RewriteCond %{REQUEST_URI} =""
-RewriteRule ^.*$ /web/index.php [NC,L]
+RewriteEngine on
 
-RewriteCond %{REQUEST_URI} !^/web/.*$
-RewriteRule ^(.*)$ /web/$1
+# if a directory or a file exists, use it directly
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
 
-RewriteCond %{REQUEST_FILENAME} -f
-RewriteRule ^.*$ - [NC,L]
-
-RewriteRule ^public/.*$ /web/index.php [NC,L]
+# otherwise forward it to index.php
